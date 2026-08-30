@@ -511,6 +511,17 @@ h1, h2, h3 {
     text-decoration: underline;
 }
 
+.footer__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer__icon {
+    flex-shrink: 0;
+    color: var(--color-vara-de-oro);
+}
+
 .footer__bottom {
     border-top: 1px solid rgba(245, 230, 211, 0.2);
     text-align: center;
