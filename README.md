@@ -5,7 +5,7 @@ E-commerce desarrollado como proyecto grupal, enfocado en construir la fachada c
 ## 📅 Información del proyecto
  
 - **Equipo:** 3 integrantes
-- **Entrega:** Sprint 1 y Sprin 2
+- **Entrega:** Sprint 1 y Sprint 2
 ## 👥 Integrantes
  
 - Juan Ignacio Sotomayor — [GitHub](https://github.com/JuanIgnacioSotomayor)
