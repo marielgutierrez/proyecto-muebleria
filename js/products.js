@@ -2,38 +2,42 @@
 const featuredProducts = [
     {
         id: 1,
-        name: "Sillón Algarrobo",
+        name: "Sillón Copacabana",
         category: "Living",
-        material: "Algarrobo macizo y cuero natural",
+        material: "Cuero curtido vegetal, acero pintado",
         price: 185000,
-        image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=600&q=80",
-        description: "Líneas cálidas de los años 60 reinterpretadas en madera nativa certificada FSC."
+        measurements: "90 × 85 × 95 cm",
+        image: "images/products/sillon-copacabana.png",
+        description: "Sillón lounge en cuero cognac con base giratoria en acero Burnt Sienna, inspirado en la estética brasilera moderna de los 60."
     },
     {
         id: 2,
-        name: "Mesa Ratona Quebracho",
-        category: "Living",
-        material: "Quebracho colorado y acabado en aceite de lino",
-        price: 132000,
-        image: "https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=600&q=80",
-        description: "Una pieza atemporal que envejece con gracia y desarrolla carácter propio."
+        name: "Biblioteca Recoleta",
+        category: "Almacenamiento",
+        material: "Estructura de acero, estantes de roble",
+        price: 232000,
+        measurements: "100 × 35 × 200 cm",
+        image: "images/products/biblioteca-recoleta.png",
+        description: "Sistema modular de estantes abierto con estructura Sage Green y repisas en roble claro, ideal para colecciones y objetos de diseño."
     },
     {
         id: 3,
-        name: "Estantería Caldén",
+        name: "Aparador Uspallata",
         category: "Almacenamiento",
-        material: "Caldén reciclado, herrajes de bronce",
+        material: "Nogal macizo FSC®, herrajes de latón",
         price: 210000,
-        image: "https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=600&q=80",
-        description: "Fabricada con un 30% de materiales recuperados, sin resignar diseño."
+        measurements: "180 × 45 × 75 cm",
+        image: "images/products/aparador-uspallata.png",
+        description: "Aparador de seis puertas fabricado en nogal sostenible con tiradores metálicos en acabado latón y silueta minimalista."
     },
     {
         id: 4,
-        name: "Silla Herencia",
-        category: "Comedor",
-        material: "Algarrobo y tapizado en lino natural",
+        name: "Butaca Mendoza",
+        category: "Living",
+        material: "Guatambú macizo, tela bouclé",
         price: 98000,
-        image: "https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=600&q=80",
-        description: "Parte del programa Herencia Viva: 10 años de garantía en estructura."
+        measurements: "80 × 75 × 85 cm",
+        image: "images/products/butaca-mendoza.png",
+        description: "Butaca tapizada en bouclé Dusty Rose con base de madera de guatambú y respaldo curvo de máximo confort."
     }
 ];
