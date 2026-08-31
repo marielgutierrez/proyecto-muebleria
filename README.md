@@ -1,4 +1,4 @@
-# Mueblería Hermanos Jota — E-commerce
+# Mueblería Hermanos Jota || E-commerce
  
 E-commerce desarrollado como proyecto grupal, enfocado en construir la fachada completa y la experiencia interactiva del cliente utilizando únicamente tecnologías del lado del cliente (HTML, CSS y JavaScript), simulando una experiencia de compra sin conexión a un backend real.
  
@@ -59,31 +59,3 @@ El sitio simula una tienda online de muebles, totalmente responsiva y visualment
 - **HTML:** etiquetas semánticas obligatorias, código limpio y bien indentado
 - **CSS:** 100% responsivo (enfoque Mobile First), uso de Flexbox en las secciones principales, estilos en archivo externo
 - **JavaScript:** productos definidos en un array de objetos (`.js`), renderizado dinámico vía DOM, carga asíncrona simulada, interactividad mediante `addEventListener`
-## 📂 Estructura del proyecto
- 
-```
-proyecto-muebleria/
-├── index.html
-├── productos.html
-├── producto.html
-├── contacto.html
-├── css/
-│   └── styles.css
-├── js/
-│   ├── products.js
-│   └── main.js
-├── images/
-│   
-└── README.md
-```
- 
-## 🚀 Cómo ejecutar el proyecto
- 
-1. Cloná el repositorio:
-```bash
-   git clone https://github.com/usuario/mueblería-hermanos-jota.git
-```
-2. Abrí `index.html` en tu navegador (no requiere instalación de dependencias ni servidor backend).
-## 🌿 Flujo de trabajo (Git)
- 
-Cada integrante trabaja su parte en una rama propia siguiendo la convención `feature/<nombre-de-la-tarea>` y realiza un Pull Request hacia `main` para su revisión antes de mergear.
