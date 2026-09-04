@@ -1,6 +1,6 @@
-# Mueblería Hermanos Jota || E-commerce
+# Mueblería Hermanos Jota - E-commerce
  
-E-commerce desarrollado como proyecto grupal, enfocado en construir la fachada completa y la experiencia interactiva del cliente utilizando únicamente tecnologías del lado del cliente (HTML, CSS y JavaScript), simulando una experiencia de compra sin conexión a un backend real.
+E-commerce desarrollado como proyecto grupal, enfocado en construir la vista completa y la experiencia interactiva del cliente utilizando únicamente tecnologías del lado del cliente (HTML, CSS y JavaScript), ofreciendo una experiencia de compra.
  
 ## 📅 Información del proyecto
  
@@ -14,7 +14,7 @@ E-commerce desarrollado como proyecto grupal, enfocado en construir la fachada c
 
 ## 📖 Descripción del proyecto
  
-El sitio simula una tienda online de muebles, totalmente responsiva y visualmente atractiva. Los productos se gestionan de forma local mediante JavaScript (arrays de objetos), sin conexión a una base de datos ni backend real. Su carga se simula como una petición asíncrona, replicando el comportamiento de una API.
+El sitio simula una tienda online de muebles, totalmente responsiva. Los productos se gestionan de forma local mediante JavaScript (arrays de objetos), sin conexión a una base de datos. Su carga se simula como una petición asíncrona, replicando el comportamiento de una API.
  
 ### Objetivos de aprendizaje
  
