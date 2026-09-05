@@ -1,4 +1,16 @@
 
+function getStoredCartCount() {
+    const saved = localStorage.getItem("hj_cart_count");
+    return saved !== null ? parseInt(saved, 10) : 0;
+}
+
+function initCartCount() {
+    const cartCountEl = document.getElementById("cartCount");
+    if (cartCountEl) {
+        cartCountEl.textContent = getStoredCartCount();
+    }
+}
+
 function fetchFeaturedProducts() {
     return new Promise((resolve) => {
         setTimeout(() => resolve(featuredProducts), 800);
@@ -18,19 +30,26 @@ function createProductCard(product) {
     card.className = "product-card";
 
     card.innerHTML = `
-        <div class="product-card__image-wrap">
+        <a href="producto.html?id=${product.id}" class="product-card__image-wrap" aria-label="Ver detalles de ${product.name}">
             <img class="product-card__image" src="${product.image}" alt="${product.name}" loading="lazy">
-        </div>
+        </a>
         <div class="product-card__body">
             <p class="product-card__category">${product.category}</p>
-            <h3 class="product-card__name">${product.name}</h3>
+            <h3 class="product-card__name">
+                <a href="producto.html?id=${product.id}">${product.name}</a>
+            </h3>
             <p class="product-card__material">${product.material}</p>
             <p class="product-card__description">${product.description}</p>
             <div class="product-card__footer">
                 <span class="product-card__price">${formatPrice(product.price)}</span>
-                <button type="button" class="btn btn--small btn--primary" data-product-id="${product.id}">
-                    Agregar
-                </button>
+                <div class="product-card__actions">
+                    <a href="producto.html?id=${product.id}" class="btn btn--small btn--secondary">
+                        Detalle
+                    </a>
+                    <button type="button" class="btn btn--small btn--primary" data-product-id="${product.id}">
+                        Agregar
+                    </button>
+                </div>
             </div>
         </div>
     `;
@@ -69,30 +88,46 @@ function handleAddToCartClick(event) {
 }
 
 function incrementCartCount() {
+    const current = getStoredCartCount();
+    const newCount = current + 1;
+    localStorage.setItem("hj_cart_count", newCount);
+
     const cartCountEl = document.getElementById("cartCount");
-    const currentCount = Number(cartCountEl.textContent) || 0;
-    cartCountEl.textContent = currentCount + 1;
+    if (cartCountEl) {
+        cartCountEl.textContent = newCount;
+    }
+
+    const cartButton = document.getElementById("cartButton");
+    if (cartButton) {
+        cartButton.classList.add("cart-button--bounce");
+        setTimeout(() => cartButton.classList.remove("cart-button--bounce"), 300);
+    }
 }
 
 function setupCartButton() {
     const cartButton = document.getElementById("cartButton");
-    cartButton.addEventListener("click", () => {
-        cartButton.classList.add("cart-button--bounce");
-        setTimeout(() => cartButton.classList.remove("cart-button--bounce"), 300);
-    });
+    if (cartButton) {
+        cartButton.addEventListener("click", () => {
+            cartButton.classList.add("cart-button--bounce");
+            setTimeout(() => cartButton.classList.remove("cart-button--bounce"), 300);
+        });
+    }
 }
 
 function setupMobileNav() {
     const navToggle = document.getElementById("navToggle");
     const mainNav = document.getElementById("mainNav");
 
-    navToggle.addEventListener("click", () => {
-        const isOpen = mainNav.classList.toggle("main-nav--open");
-        navToggle.setAttribute("aria-expanded", String(isOpen));
-    });
+    if (navToggle && mainNav) {
+        navToggle.addEventListener("click", () => {
+            const isOpen = mainNav.classList.toggle("main-nav--open");
+            navToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    initCartCount();
     renderFeaturedProducts();
     setupCartButton();
     setupMobileNav();
