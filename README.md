@@ -4,13 +4,12 @@ E-commerce desarrollado como proyecto grupal, enfocado en construir la vista com
  
 ## 📅 Información del proyecto
  
-- **Equipo:** 3 integrantes
+- **Equipo:** 2 integrantes
 - **Entrega:** Sprint 1 y Sprint 2
 ## 👥 Integrantes
  
 - Juan Ignacio Sotomayor — [GitHub](https://github.com/JuanIgnacioSotomayor)
 - Mariel Anabella Gutiérrez — [GitHub](https://github.com/marielgutierrez)
-- Santiago Rojas — [GitHub](https://github.com/zant172)
 
 ## 📖 Descripción del proyecto
  
@@ -54,6 +53,7 @@ El sitio simula una tienda online de muebles, totalmente responsiva. Los product
 - **CSS3** — diseño responsivo Mobile First, Flexbox, Modelo de Cajas
 - **JavaScript (Vanilla JS)** — lógica de la aplicación, manipulación del DOM, manejo de eventos, gestión de datos con Arrays de Objetos y simulación de carga asíncrona (`setTimeout` / `async-await`)
 - **Git & GitHub** — control de versiones y trabajo colaborativo
+- **Claude y Antigravity**
 ## 📐 Requisitos técnicos
  
 - **HTML:** etiquetas semánticas obligatorias, código limpio y bien indentado
