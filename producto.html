@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Detalle de Producto | Hermanos Jota</title>
+    <meta name="description" id="metaDescription" content="Descubrí los detalles de fabricación, materiales nobles y diseño atemporal de Hermanos Jota.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <img src="images/HJ_logo.png" alt="Hermanos Jota" class="logo__image">
+                <span class="logo__text">Hermanos Jota</span>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+                <ul class="main-nav__list">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <button class="cart-button" id="cartButton" aria-label="Ver carrito de compras">
+                <span class="cart-button__icon" aria-hidden="true">🛒</span>
+                <span class="cart-button__count" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Miga de pan / Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+            <div class="container">
+                <ol class="breadcrumb__list">
+                    <li class="breadcrumb__item"><a href="index.html">Inicio</a></li>
+                    <li class="breadcrumb__item"><a href="index.html#featured-title">Productos</a></li>
+                    <li class="breadcrumb__item breadcrumb__item--active" id="breadcrumbCurrent" aria-current="page">Detalle de producto</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Detalle de Producto -->
+        <section class="product-detail" aria-labelledby="productTitle">
+            <div class="container" id="productDetailContainer">
+                <div class="product-detail__loading" id="detailLoading">
+                    <p class="products-grid__loading">Cargando detalles de la pieza...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Piezas Relacionadas -->
+        <section class="related-products" aria-labelledby="relatedTitle">
+            <div class="container">
+                <h2 id="relatedTitle" class="section-title">Otras piezas de la colección</h2>
+                <p class="section-subtitle">
+                    Diseños creados bajo la misma filosofía de honestidad de materiales y herencia artesanal.
+                </p>
+                <div class="products-grid" id="relatedGrid">
+                    <!-- Productos relacionados inyectados dinámicamente -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Notificación flotante (Toast) -->
+    <div class="toast-notification" id="toastNotification" role="status" aria-live="polite" aria-atomic="true">
+        <span class="toast-notification__icon">✓</span>
+        <span class="toast-notification__message" id="toastMessage"></span>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <span class="logo__text logo__text--light">Hermanos Jota</span>
+                <p>No solo comprás muebles; invertís en un legado.</p>
+            </div>
+
+            <div class="footer__block">
+                <h3>Showroom y taller</h3>
+                <address>
+                    Av. San Juan 2847<br>
+                    C1232AAB — Barrio de San Cristóbal<br>
+                    Ciudad Autónoma de Buenos Aires, Argentina
+                </address>
+                <p>Lun a Vie: 10:00 - 19:00 · Sáb: 10:00 - 14:00</p>
+            </div>
+
+            <div class="footer__block">
+                <h3>Contacto</h3>
+                <ul class="footer__list">
+                    <li>
+                        <a href="mailto:info@hermanosjota.com.ar" class="footer__link">
+                            <svg class="footer__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <path d="M3 7l9 6 9-6"></path>
+                            </svg>
+                            info@hermanosjota.com.ar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:ventas@hermanosjota.com.ar" class="footer__link">
+                            <svg class="footer__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <path d="M3 7l9 6 9-6"></path>
+                            </svg>
+                            ventas@hermanosjota.com.ar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/5491145678900" class="footer__link" target="_blank" rel="noopener noreferrer">
+                            <svg class="footer__icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 22c-1.83 0-3.615-.508-5.156-1.472l-3.706.972.988-3.62A9.925 9.925 0 0 1 2 12.05C2 6.5 6.53 2 12.05 2 17.5 2 22 6.5 22 12.05 22 17.5 17.5 22 12.05 22z"></path>
+                            </svg>
+                            +54 11 4567-8900
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__block">
+                <h3>Seguinos</h3>
+                <ul class="footer__list">
+                    <li>
+                        <a href="https://instagram.com/hermanosjota_ba" target="_blank" rel="noopener noreferrer" class="footer__link">
+                            <svg class="footer__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            @hermanosjota_ba
+                        </a>
+                    </li>
+                </ul>
+                <nav aria-label="Navegación del pie de página">
+                    <ul class="footer__list">
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>&copy; 2026 Hermanos Jota. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/product-detail.js"></script>
+</body>
+</html>

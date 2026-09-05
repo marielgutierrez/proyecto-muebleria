@@ -19,19 +19,26 @@ function createProductCard(product) {
     card.className = "product-card";
 
     card.innerHTML = `
-        <div class="product-card__image-wrap">
+        <a href="producto.html?id=${product.id}" class="product-card__image-wrap" aria-label="Ver detalles de ${product.name}">
             <img class="product-card__image" src="${product.image}" alt="${product.name}" loading="lazy">
-        </div>
+        </a>
         <div class="product-card__body">
             <p class="product-card__category">${product.category}</p>
-            <h3 class="product-card__name">${product.name}</h3>
+            <h3 class="product-card__name">
+                <a href="producto.html?id=${product.id}">${product.name}</a>
+            </h3>
             <p class="product-card__material">${product.material}</p>
             <p class="product-card__description">${product.description}</p>
             <div class="product-card__footer">
                 <span class="product-card__price">${formatPrice(product.price)}</span>
-                <button type="button" class="btn btn--small btn--primary" data-product-id="${product.id}">
-                    Agregar
-                </button>
+                <div class="product-card__actions">
+                    <a href="producto.html?id=${product.id}" class="btn btn--small btn--secondary">
+                        Detalle
+                    </a>
+                    <button type="button" class="btn btn--small btn--primary" data-product-id="${product.id}">
+                        Agregar
+                    </button>
+                </div>
             </div>
         </div>
     `;
@@ -107,12 +114,12 @@ function incrementCartCount() {
 
 function setupCartButton() {
     const cartButton = document.getElementById("cartButton");
-    if (!cartButton) return;
-
-    cartButton.addEventListener("click", () => {
-        cartButton.classList.add("cart-button--bounce");
-        setTimeout(() => cartButton.classList.remove("cart-button--bounce"), 300);
-    });
+    if (cartButton) {
+        cartButton.addEventListener("click", () => {
+            cartButton.classList.add("cart-button--bounce");
+            setTimeout(() => cartButton.classList.remove("cart-button--bounce"), 300);
+        });
+    }
 }
 
 function setupMobileNav() {
