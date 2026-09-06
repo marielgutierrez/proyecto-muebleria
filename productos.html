@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Detalle de Producto | Hermanos Jota</title>
-    <meta name="description" id="metaDescription" content="Descubrí los detalles de fabricación, materiales nobles y diseño atemporal de Hermanos Jota.">
+    <title>Catálogo de Productos | Hermanos Jota</title>
+    <meta name="description" content="Explorá el catálogo completo de muebles artesanales de Hermanos Jota. Diseño de autor, maderas nativas certificadas y detalles de fabricación que perduran.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="images/favicon-32x32.png">
@@ -29,7 +29,7 @@
             <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
                 <ul class="main-nav__list">
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="productos.html" aria-current="page">Productos</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
@@ -42,38 +42,80 @@
     </header>
 
     <main>
-        <!-- Miga de pan / Breadcrumb -->
-        <nav class="breadcrumb" aria-label="Ruta de navegación">
-            <div class="container">
-                <ol class="breadcrumb__list">
-                    <li class="breadcrumb__item"><a href="index.html">Inicio</a></li>
-                    <li class="breadcrumb__item"><a href="productos.html">Productos</a></li>
-                    <li class="breadcrumb__item breadcrumb__item--active" id="breadcrumbCurrent" aria-current="page">Detalle de producto</li>
-                </ol>
-            </div>
-        </nav>
 
-        <!-- Detalle de Producto -->
-        <section class="product-detail" aria-labelledby="productTitle">
-            <div class="container" id="productDetailContainer">
-                <div class="product-detail__loading" id="detailLoading">
-                    <p class="products-grid__loading">Cargando detalles de la pieza...</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Piezas Relacionadas -->
-        <section class="related-products" aria-labelledby="relatedTitle">
-            <div class="container">
-                <h2 id="relatedTitle" class="section-title">Otras piezas de la colección</h2>
-                <p class="section-subtitle">
-                    Diseños creados bajo la misma filosofía de honestidad de materiales y herencia artesanal.
+        <!-- Cabecera del catálogo -->
+        <section class="catalog-hero">
+            <div class="container catalog-hero__inner">
+                <p class="catalog-hero__eyebrow">Catálogo Oficial · Colección Completa</p>
+                <h1 class="catalog-hero__title">Muebles con Historia</h1>
+                <p class="catalog-hero__subtitle">
+                    Cada pieza es concebida y ensamblada en nuestra Casa Taller con maderas nativas argentinas, 
+                    técnicas de ebanistería tradicional y acabados de bajo impacto ambiental. 
+                    Hacé clic en cualquier pieza para conocer sus detalles de fabricación e historia.
                 </p>
-                <div class="products-grid" id="relatedGrid">
-                    <!-- Productos relacionados inyectados dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Barra de herramientas del catálogo: búsqueda, filtros y ordenamiento -->
+        <section class="catalog-controls" aria-label="Controles de búsqueda y filtros">
+            <div class="container">
+                <div class="catalog-toolbar">
+                    <!-- Buscador en tiempo real -->
+                    <div class="catalog-search">
+                        <span class="catalog-search__icon" aria-hidden="true">🔍</span>
+                        <input 
+                            type="search" 
+                            id="catalogSearchInput" 
+                            class="catalog-search__input" 
+                            placeholder="Buscar por nombre, material, diseño..." 
+                            aria-label="Buscar en el catálogo"
+                            autocomplete="off"
+                        >
+                        <button type="button" id="clearSearchBtn" class="catalog-search__clear" aria-label="Limpiar búsqueda" hidden>&times;</button>
+                    </div>
+
+                    <!-- Filtro por categorías -->
+                    <div class="category-pills" id="categoryPills" role="group" aria-label="Filtrar por categoría">
+                        <button type="button" class="category-pill category-pill--active" data-category="all">
+                            Todas las piezas
+                        </button>
+                        <button type="button" class="category-pill" data-category="Living">
+                            Living
+                        </button>
+                        <button type="button" class="category-pill" data-category="Almacenamiento">
+                            Almacenamiento
+                        </button>
+                    </div>
+
+                    <!-- Selector de ordenamiento -->
+                    <div class="catalog-sort">
+                        <label for="catalogSortSelect" class="catalog-sort__label">Ordenar:</label>
+                        <select id="catalogSortSelect" class="catalog-sort__select" aria-label="Ordenar productos">
+                            <option value="featured">Destacados</option>
+                            <option value="price-asc">Precio: menor a mayor</option>
+                            <option value="price-desc">Precio: mayor a menor</option>
+                            <option value="name-asc">Nombre: A a Z</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Barra de estado / conteo de resultados -->
+                <div class="catalog-status" id="catalogStatus" aria-live="polite">
+                    <span id="resultsCount">Cargando colección...</span>
                 </div>
             </div>
         </section>
+
+        <!-- Grilla de productos del catálogo -->
+        <section class="catalog-grid-section" aria-labelledby="catalogResultsTitle">
+            <h2 id="catalogResultsTitle" class="visually-hidden">Piezas del catálogo</h2>
+            <div class="container">
+                <div class="products-grid" id="catalogProductsGrid">
+                    <p class="products-grid__loading" id="catalogLoading">Cargando piezas del catálogo...</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Notificación flotante (Toast) -->
@@ -160,6 +202,6 @@
     </footer>
 
     <script src="js/products.js"></script>
-    <script src="js/product-detail.js"></script>
+    <script src="js/catalog.js"></script>
 </body>
 </html>
