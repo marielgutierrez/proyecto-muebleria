@@ -1,4 +1,5 @@
-const CART_STORAGE_KEY = "hermanosJota.cartCount";
+const CART_STORAGE_KEY = "hj_cart_count";
+const LEGACY_CART_STORAGE_KEY = "hermanosJota.cartCount";
 
 function fetchFeaturedProducts() {
     return new Promise((resolve) => {
@@ -71,17 +72,54 @@ async function renderFeaturedProducts() {
     }
 }
 
+function showToast(message) {
+    const toast = document.getElementById("toastNotification");
+    const toastMessage = document.getElementById("toastMessage");
+    if (!toast || !toastMessage) return;
+
+    toastMessage.textContent = message;
+    toast.classList.add("toast-notification--visible");
+
+    if (window.toastTimeout) {
+        clearTimeout(window.toastTimeout);
+    }
+
+    window.toastTimeout = setTimeout(() => {
+        toast.classList.remove("toast-notification--visible");
+    }, 3200);
+}
+
 function handleAddToCartClick(event) {
     const button = event.target.closest("[data-product-id]");
     if (!button) return;
 
+    const productId = parseInt(button.dataset.productId || button.getAttribute("data-product-id"), 10);
+    const product = typeof featuredProducts !== "undefined" ? featuredProducts.find((p) => p.id === productId) : null;
+
     incrementCartCount();
+
+    const cartButton = document.getElementById("cartButton");
+    if (cartButton) {
+        cartButton.classList.add("cart-button--bounce");
+        setTimeout(() => cartButton.classList.remove("cart-button--bounce"), 300);
+    }
+
+    const productName = product ? product.name : "Pieza";
+    showToast(`¡Se agregó "${productName}" al carrito!`);
 }
 
 /* ---------- Carrito simulado (compartido entre páginas) ---------- */
 function readStoredCartCount() {
     try {
-        return Number(localStorage.getItem(CART_STORAGE_KEY)) || 0;
+        const saved = localStorage.getItem(CART_STORAGE_KEY);
+        if (saved !== null) {
+            return parseInt(saved, 10) || 0;
+        }
+        const legacy = localStorage.getItem(LEGACY_CART_STORAGE_KEY);
+        if (legacy !== null) {
+            return parseInt(legacy, 10) || 0;
+        }
+        return 0;
     } catch (error) {
         return 0;
     }
@@ -132,6 +170,12 @@ function setupMobileNav() {
         navToggle.setAttribute("aria-expanded", String(isOpen));
     });
 }
+
+window.addEventListener("storage", (event) => {
+    if (event.key === CART_STORAGE_KEY || event.key === LEGACY_CART_STORAGE_KEY) {
+        renderCartCount();
+    }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     renderCartCount();

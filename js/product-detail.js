@@ -8,13 +8,31 @@ function formatPrice(price) {
     });
 }
 
+const CART_STORAGE_KEY = "hj_cart_count";
+const LEGACY_CART_STORAGE_KEY = "hermanosJota.cartCount";
+
 function getStoredCartCount() {
-    const saved = localStorage.getItem("hj_cart_count");
-    return saved !== null ? parseInt(saved, 10) : 0;
+    try {
+        const saved = localStorage.getItem(CART_STORAGE_KEY);
+        if (saved !== null) {
+            return parseInt(saved, 10) || 0;
+        }
+        const legacy = localStorage.getItem(LEGACY_CART_STORAGE_KEY);
+        if (legacy !== null) {
+            return parseInt(legacy, 10) || 0;
+        }
+        return 0;
+    } catch (error) {
+        return 0;
+    }
 }
 
 function updateCartUI(newCount) {
-    localStorage.setItem("hj_cart_count", newCount);
+    try {
+        localStorage.setItem(CART_STORAGE_KEY, String(newCount));
+    } catch (error) {
+        /* storage bloqueado */
+    }
     const cartCountEl = document.getElementById("cartCount");
     if (cartCountEl) {
         cartCountEl.textContent = newCount;
@@ -300,5 +318,14 @@ async function initProductDetailPage() {
         renderNotFound();
     }
 }
+
+window.addEventListener("storage", (event) => {
+    if (event.key === CART_STORAGE_KEY || event.key === LEGACY_CART_STORAGE_KEY) {
+        const cartCountEl = document.getElementById("cartCount");
+        if (cartCountEl) {
+            cartCountEl.textContent = getStoredCartCount();
+        }
+    }
+});
 
 document.addEventListener("DOMContentLoaded", initProductDetailPage);
